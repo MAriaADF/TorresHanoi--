@@ -40,7 +40,67 @@ namespace TorresdeHanoi
             if ((e.X > 170 & e.X <= 330) & (finalB != 0)) { intB = true; intA = false; intC = false; }
             if ((e.X > 330 & e.X <= 500) & (finalC != 0)) { intC = true; intA = false; intB = false; }
         }
-        private void panel1_MouseMove(object sender, MouseEventArgs e) { }
+
+        //Al mover el mouse hacia las torres, que utilice la funcion del sistema "Refresh" para que dibuje el anillo que se mueve
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (intA | intB | intC) { this.Refresh(); }
+
+            if (intA)
+            {
+                crear.FillRectangle(new SolidBrush(Color.LightCoral), 90 - (TorreA[AnillosA - 1] * 10), 210 - ((AnillosA - 1) * 20), 20 * TorreA[AnillosA - 1], 20);
+                crear.FillRectangle(new SolidBrush(Color.Azure), 85, 210 - ((AnillosA - 1) * 20), 10, 20);// se dibuja el anillo en movimiento y se cambia el color
+                int x = e.X - (10 * TorreA[AnillosA - 1]);
+                int y = e.Y - 10;
+                crear.FillRectangle(new SolidBrush(Color.Black), x, y, 20 * TorreA[AnillosA - 1], 20);
+
+                if (TorreA[AnillosA - 1] == 1) { color = Color.Coral; }
+                if (TorreA[AnillosA - 1] == 2) { color = Color.Brown; }
+                if (TorreA[AnillosA - 1] == 3) { color = Color.BlueViolet; }
+                if (TorreA[AnillosA - 1] == 4) { color = Color.DarkBlue; }
+                if (TorreA[AnillosA - 1] == 5) { color = Color.DarkRed; }
+                if (TorreA[AnillosA - 1] == 6) { color = Color.Yellow; }
+                if (TorreA[AnillosA - 1] == 7) { color = Color.White; }
+                if (TorreA[AnillosA - 1] == 8) { color = Color.CadetBlue; }
+                crear.FillRectangle(new SolidBrush(color), x + 2, y + 2, (20 * TorreA[AnillosA - 1]) - 4, 16);
+            }
+            if (intB)
+            {
+                crear.FillRectangle(new SolidBrush(Color.LightCoral), 250 - (TorreB[AnillosB - 1] * 10), 210 - ((AnillosB - 1) * 20), 20 * TorreB[AnillosB - 1], 20);
+                crear.FillRectangle(new SolidBrush(Color.Brown), 245, 210 - ((AnillosB - 1) * 20), 10, 20);
+                int x = e.X - (10 * TorreB[AnillosB - 1]);
+                int y = e.Y - 10;
+                crear.FillRectangle(new SolidBrush(Color.Black), x, y, 20 * TorreB[AnillosB - 1], 20);
+
+                if (TorreB[AnillosB - 1] == 1) { color = Color.Coral; }
+                if (TorreB[AnillosB - 1] == 2) { color = Color.Brown; }
+                if (TorreB[AnillosB - 1] == 3) { color = Color.BlueViolet; }
+                if (TorreB[AnillosB - 1] == 4) { color = Color.DarkBlue; }
+                if (TorreB[AnillosB - 1] == 5) { color = Color.DarkRed; }
+                if (TorreB[AnillosB - 1] == 6) { color = Color.Yellow; }
+                if (TorreB[AnillosB - 1] == 7) { color = Color.White; }
+                if (TorreA[AnillosB - 1] == 8) { color = Color.CadetBlue; }
+                crear.FillRectangle(new SolidBrush(color), x + 2, y + 2, (20 * TorreB[AnillosB - 1]) - 4, 16);
+            }
+            if (intC)
+            {
+                crear.FillRectangle(new SolidBrush(Color.LightCoral), 410 - (TorreC[AnillosC - 1] * 10), 210 - ((AnillosC - 1) * 20), 20 * TorreC[AnillosC - 1], 20);
+                crear.FillRectangle(new SolidBrush(Color.Brown), 405, 210 - ((AnillosC - 1) * 20), 10, 20);
+                int x = e.X - (10 * TorreC[AnillosC - 1]);
+                int y = e.Y - 10;
+                crear.FillRectangle(new SolidBrush(Color.Black), x, y, 20 * TorreC[AnillosC - 1], 20);
+
+                if (TorreC[AnillosC - 1] == 1) { color = Color.Coral; }
+                if (TorreC[AnillosC - 1] == 2) { color = Color.Brown; }
+                if (TorreC[AnillosC - 1] == 3) { color = Color.BlueViolet; }
+                if (TorreC[AnillosC - 1] == 4) { color = Color.DarkBlue; }
+                if (TorreC[AnillosC - 1] == 5) { color = Color.DarkRed; }
+                if (TorreC[AnillosC - 1] == 6) { color = Color.Yellow; }
+                if (TorreC[AnillosC - 1] == 7) { color = Color.White; }
+                if (TorreA[AnillosC - 1] == 8) { color = Color.CadetBlue; }
+                crear.FillRectangle(new SolidBrush(color), x + 2, y + 2, (20 * TorreC[AnillosC - 1]) - 4, 16);
+            }
+        }
         private void panel1_MouseUp(object sender, MouseEventArgs e) { }
         public void dibuja() { }
         private void panel1_Paint(object sender, PaintEventArgs e)
