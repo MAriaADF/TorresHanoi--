@@ -101,7 +101,138 @@ namespace TorresdeHanoi
                 crear.FillRectangle(new SolidBrush(color), x + 2, y + 2, (20 * TorreC[AnillosC - 1]) - 4, 16);
             }
         }
-        private void panel1_MouseUp(object sender, MouseEventArgs e) { }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if ((e.X >= 0 & e.X <= 170) & intB & ((finalB < finalA) | finalA == 0))
+            {
+                finalA = finalB;
+                TorreA[AnillosA] = finalB;
+                if (AnillosB > 1)
+                { finalB = TorreB[AnillosB - 2]; }
+                else
+                { finalB = TorreB[AnillosB]; }
+                TorreB[AnillosB - 1] = 0;
+                AnillosA++;
+                AnillosB--;
+                Intentos++;
+            }
+            if ((e.X >= 0 & e.X <= 170) & intC & ((finalC < finalA) | finalA == 0))
+            {
+                finalA = finalC;
+                TorreA[AnillosA] = finalC;
+                if (AnillosC > 1)
+                { finalC = TorreC[AnillosC - 2]; }
+                else
+                { finalC = TorreC[AnillosC]; }
+                TorreC[AnillosC - 1] = 0;
+                AnillosA++;
+                AnillosC--;
+                Intentos++;
+            }
+            if ((e.X > 170 & e.X <= 330) & intA & ((finalA < finalB) | finalB == 0))
+            {
+                finalB = finalA;
+                TorreB[AnillosB] = finalA;
+                if (AnillosA > 1)
+                { finalA = TorreA[AnillosA - 2]; }
+                else
+                { finalA = TorreA[AnillosA]; }
+                TorreA[AnillosA - 1] = 0;
+                AnillosB++;
+                AnillosA--;
+                Intentos++;
+            }
+            if ((e.X > 170 & e.X <= 330) & intC & ((finalC < finalB) | finalB == 0))
+            {
+                finalB = finalC;
+                TorreB[AnillosB] = finalC;
+                if (AnillosC > 1)
+                { finalC = TorreC[AnillosC - 2]; }
+                else
+                { finalC = TorreC[AnillosC]; }
+                TorreC[AnillosC - 1] = 0;
+                AnillosB++;
+                AnillosC--;
+                Intentos++;
+            }
+            if ((e.X > 330 & e.X <= 500) & intA & ((finalA < finalC) | finalC == 0))
+            {
+                finalC = finalA;
+                TorreC[AnillosC] = finalA;
+                if (AnillosA > 1)
+                { finalA = TorreA[AnillosA - 2]; }
+                else
+                { finalA = TorreA[AnillosA]; }
+                TorreA[AnillosA - 1] = 0;
+                AnillosC++;
+                AnillosA--;
+                Intentos++;
+            }
+            if ((e.X > 330 & e.X <= 5000) & intB & ((finalB < finalC) | finalC == 0))
+            {
+                finalC = finalB;
+                TorreC[AnillosC] = finalB;
+                if (AnillosB > 1)
+                { finalB = TorreB[AnillosB - 2]; }
+                else
+                { finalB = TorreB[AnillosB]; }
+                TorreB[AnillosB - 1] = 0;
+                AnillosC++;
+                AnillosB--;
+                Intentos++;
+            }
+            intA = false; intB = false; intC = false;
+            this.Refresh();
+            lblIntentos2.Text = Intentos.ToString();
+            if ((TorreC[NumAnillos - 1] == 1) & Jugar)
+            {
+                timer1.Stop();
+                intentosMin = 0;
+                for (int n = 1; n <= NumAnillos; n++)
+                { intentosMin = (intentosMin * 2) + 1; }
+                if (Intentos > intentosMin)
+                {//muestra un mensaje diciendo que ha ganado pero en un numero mayor de intentos a lo esperado
+                    string mejor = "Felicidades";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
+                    string mensaje = "Lo lograste en un tiempo de: " + this.lblIntentos3.Text + " con " + this.lblIntentos2.Text + " intentos ";
+                    // Muestra el mensaje de ganador
+
+                    result = MessageBox.Show(mensaje, mejor, buttons);
+
+                    var resultado = (MessageBox.Show("Desea salir", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning));
+                    if (resultado == DialogResult.Yes)
+                    {
+                        this.Close();
+
+                    }
+                    if (resultado == DialogResult.No)
+                    {
+                        panel_juego.Visible = false;
+                        panel_menu.Visible = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lo lograste en la cantidad minima de intentos: " + this.lblIntentos2.Text, "Felicidades",
+                        MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    var resultado = (MessageBox.Show("Desea salir", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning));
+                    if (resultado == DialogResult.Yes)
+                    {
+                        this.Close();
+                    }
+                    if (resultado == DialogResult.No)
+                    {
+                        panel_juego.Visible = false;
+                        panel_menu.Visible = true;
+                    }
+
+                }
+                this.Refresh();
+                Jugar = false;
+            }
+        }
         public void dibuja() { }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
