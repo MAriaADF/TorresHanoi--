@@ -102,6 +102,7 @@ namespace TorresdeHanoi
             }
         }
 
+        //Al soltar click que valide si el anillo se coloca donde corresponde
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
             if ((e.X >= 0 & e.X <= 170) & intB & ((finalB < finalA) | finalA == 0))
@@ -233,7 +234,78 @@ namespace TorresdeHanoi
                 Jugar = false;
             }
         }
-        public void dibuja() { }
+
+        //se encarga de dibujar las torres y los anillos
+        public void dibuja()
+        {
+            crear.FillRectangle(new SolidBrush(Color.LightGray), 0, 0, 500, 250);
+            //Torre A
+            crear.FillRectangle(new SolidBrush(Color.DarkGray), 20, 230, 140, 20);
+            crear.FillRectangle(new SolidBrush(Color.DarkGray), 85, 30, 10, 210);
+            //Torre B
+            crear.FillRectangle(new SolidBrush(Color.Gray), 180, 230, 140, 20);
+            crear.FillRectangle(new SolidBrush(Color.Gray), 245, 30, 10, 210);
+            //TorreC
+            crear.FillRectangle(new SolidBrush(Color.DimGray), 340, 230, 140, 20);
+            crear.FillRectangle(new SolidBrush(Color.DimGray), 405, 30, 10, 210);
+
+            for (int a = 0; a < NumAnillos; a++)
+            {
+                crear.FillRectangle(new SolidBrush(Color.Black), 90 - (TorreA[a] * 10), 210 - (a * 20), 20 * TorreA[a], 20);
+                crear.FillRectangle(new SolidBrush(Color.Black), 250 - (TorreB[a] * 10), 210 - (a * 20), 20 * TorreB[a], 20);
+                crear.FillRectangle(new SolidBrush(Color.Black), 410 - (TorreC[a] * 10), 210 - (a * 20), 20 * TorreC[a], 20);
+
+                if (TorreA[a] == 1 | TorreB[a] == 1 | TorreC[a] == 1)
+                {
+                    if (TorreA[a] == 1) { posx = 92 - (TorreA[a] * 10); }
+                    if (TorreB[a] == 1) { posx = 252 - (TorreB[a] * 10); }
+                    if (TorreC[a] == 1) { posx = 412 - (TorreC[a] * 10); }
+                    crear.FillRectangle(new SolidBrush(Color.LightBlue), posx, 212 - (a * 20), 16, 16);
+                }
+                if (TorreA[a] == 2 | TorreB[a] == 2 | TorreC[a] == 2)
+                {
+                    if (TorreA[a] == 2) { posx = 92 - (TorreA[a] * 10); }
+                    if (TorreB[a] == 2) { posx = 252 - (TorreB[a] * 10); }
+                    if (TorreC[a] == 2) { posx = 412 - (TorreC[a] * 10); }
+                    crear.FillRectangle(new SolidBrush(Color.LightGreen), posx, 212 - (a * 20), 36, 16);
+                }
+                if (TorreA[a] == 3 | TorreB[a] == 3 | TorreC[a] == 3)
+                {
+                    if (TorreA[a] == 3) { posx = 92 - (TorreA[a] * 10); }
+                    if (TorreB[a] == 3) { posx = 252 - (TorreB[a] * 10); }
+                    if (TorreC[a] == 3) { posx = 412 - (TorreC[a] * 10); }
+                    crear.FillRectangle(new SolidBrush(Color.MediumOrchid), posx, 212 - (a * 20), 56, 16);
+                }
+                if (TorreA[a] == 4 | TorreB[a] == 4 | TorreC[a] == 4)
+                {
+                    if (TorreA[a] == 4) { posx = 92 - (TorreA[a] * 10); }
+                    if (TorreB[a] == 4) { posx = 252 - (TorreB[a] * 10); }
+                    if (TorreC[a] == 4) { posx = 412 - (TorreC[a] * 10); }
+                    crear.FillRectangle(new SolidBrush(Color.Olive), posx, 212 - (a * 20), 76, 16);
+                }
+                if (TorreA[a] == 5 | TorreB[a] == 5 | TorreC[a] == 5)
+                {
+                    if (TorreA[a] == 5) { posx = 92 - (TorreA[a] * 10); }
+                    if (TorreB[a] == 5) { posx = 252 - (TorreB[a] * 10); }
+                    if (TorreC[a] == 5) { posx = 412 - (TorreC[a] * 10); }
+                    crear.FillRectangle(new SolidBrush(Color.LightSkyBlue), posx, 212 - (a * 20), 96, 16);
+                }
+                if (TorreA[a] == 6 | TorreB[a] == 6 | TorreC[a] == 6)
+                {
+                    if (TorreA[a] == 6) { posx = 92 - (TorreA[a] * 10); }
+                    if (TorreB[a] == 6) { posx = 252 - (TorreB[a] * 10); }
+                    if (TorreC[a] == 6) { posx = 412 - (TorreC[a] * 10); }
+                    crear.FillRectangle(new SolidBrush(Color.LightGoldenrodYellow), posx, 212 - (a * 20), 116, 16);
+                }
+                if (TorreA[a] == 7 | TorreB[a] == 7 | TorreC[a] == 7)
+                {
+                    if (TorreA[a] == 7) { posx = 92 - (TorreA[a] * 10); }
+                    if (TorreB[a] == 7) { posx = 252 - (TorreB[a] * 10); }
+                    if (TorreC[a] == 7) { posx = 412 - (TorreC[a] * 10); }
+                    crear.FillRectangle(new SolidBrush(Color.LightPink), posx, 212 - (a * 20), 136, 16);
+                }
+            }
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             
