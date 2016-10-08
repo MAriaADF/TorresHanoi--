@@ -306,10 +306,14 @@ namespace TorresdeHanoi
                 }
             }
         }
+
+        //Dibuja juego
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            
+            if (Jugar)
+                dibuja();
         }
+
         private void timer1_Tick(object sender, EventArgs e) { }
         private void button5_Click_1(object sender, EventArgs e) { }
         private void btn_demo_Click(object sender, EventArgs e) { }
