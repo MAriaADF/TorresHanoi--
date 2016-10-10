@@ -347,6 +347,7 @@ namespace TorresdeHanoi
             this.Refresh();
         }
 
+
         private void button5_Click_1(object sender, EventArgs e) { }
         private void btn_demo_Click(object sender, EventArgs e) { }
         private void btn_jugar_Click(object sender, EventArgs e) { }
@@ -362,6 +363,39 @@ namespace TorresdeHanoi
         private void btn_salir_Click(object sender, EventArgs e)
         {
            
+        }
+
+        //Jugar, se validan las reglas para obtener el ganador del juego
+        private void inicia_juego()
+        {
+            this.btnPausa.Text = "Pausa";
+            label2.Visible = (true);
+            label3.Visible = (true);
+            label4.Visible = (true);
+            juego.Enabled = (true);
+            btnPausa.Visible = (true);
+            comp++;
+            this.lblIntentos3.Text = "0";
+            timer1.Start();
+            TorreA = new int[NumAnillos];
+            TorreB = new int[NumAnillos];
+            TorreC = new int[NumAnillos];
+            AnillosA = NumAnillos;
+            AnillosB = 0;
+            AnillosC = 0;
+            finalA = 1;
+            finalB = 0;
+            finalC = 0;
+            for (int a = NumAnillos, b = 0; a > 0; a--, b++)
+            { TorreA[b] = a; }
+            Intentos = 0;
+            if (comp != 0)
+            {
+                cronos.Reset();
+            }
+            lblIntentos2.Text = Intentos.ToString();
+            Jugar = true;
+            this.Refresh();
         }
     }
 }
