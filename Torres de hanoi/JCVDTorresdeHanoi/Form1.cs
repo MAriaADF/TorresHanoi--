@@ -314,39 +314,19 @@ namespace TorresdeHanoi
                 dibuja();
         }
 
-        //Jugar, se validan las reglas para obtener el ganador del juego
+       
+        //declara el contador que lleva la cuenta del tiempo
         private void timer1_Tick(object sender, EventArgs e)
         {
-            this.btnPausa.Text = "Pausa";
-            label2.Visible = (true);
-            label3.Visible = (true);
-            label4.Visible = (true);
-            juego.Enabled = (true);
-            btnPausa.Visible = (true);
-            comp++;
-            this.lblIntentos3.Text = "0";
-            timer1.Start();
-            TorreA = new int[NumAnillos];
-            TorreB = new int[NumAnillos];
-            TorreC = new int[NumAnillos];
-            AnillosA = NumAnillos;
-            AnillosB = 0;
-            AnillosC = 0;
-            finalA = 1;
-            finalB = 0;
-            finalC = 0;
-            for (int a = NumAnillos, b = 0; a > 0; a--, b++)
-            { TorreA[b] = a; }
-            Intentos = 0;
-            if (comp != 0)
-            {
-                cronos.Reset();
-            }
-            lblIntentos2.Text = Intentos.ToString();
-            Jugar = true;
-            this.Refresh();
-        }
+            cronos.Start();//inicia el contador
 
+            if (cronos.IsRunning)
+            {
+
+                TimeSpan ts = cronos.Elapsed;
+                this.lblIntentos3.Text = String.Format("{0:00}:{1:00}:{2:00}:{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            }
+        }
 
         private void button5_Click_1(object sender, EventArgs e) { }
         private void btn_demo_Click(object sender, EventArgs e) { }
