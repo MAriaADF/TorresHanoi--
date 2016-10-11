@@ -328,8 +328,29 @@ namespace TorresdeHanoi
             }
         }
 
-        private void button5_Click_1(object sender, EventArgs e) { }
-        private void btn_demo_Click(object sender, EventArgs e) { }
+        // se utiliza este boton para pausar el juego, pausando el tiempo y bloqueando los controles
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            if (comp2 == 0)
+            {
+                cronos.Stop();
+                timer1.Stop();
+                juego.Enabled = (false);
+                this.btnPausa.Text = "Continuar";//cambia el texto del boton
+                comp2++;
+
+            }
+            else if (comp2 == 1)
+            {
+                juego.Enabled = (true);
+                cronos.Start();
+                timer1.Start();
+                this.btnPausa.Text = "Pausa";//cambia el texto del boton
+                comp2--;
+            }
+        }
+
+        private void btn_demo_Click(object sender, EventArgs e)
         private void btn_jugar_Click(object sender, EventArgs e) { }
         
         private void torresHanoi_KeyPress(object sender, KeyPressEventArgs e)
