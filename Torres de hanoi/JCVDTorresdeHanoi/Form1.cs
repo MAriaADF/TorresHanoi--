@@ -351,6 +351,40 @@ namespace TorresdeHanoi
         }
 
         private void btn_demo_Click(object sender, EventArgs e)
+        {
+            validar_nivel();
+            if (cbx_nivel.Text == "")
+            {
+                MessageBox.Show("Seleccione el nivel del demo");
+            }
+
+            if (NumAnillos == 3 & cbx_nivel.Text == "Facil")
+            {
+                panel_juego.Visible = true;
+                panel_menu.Visible = false;
+                lb_nivel.Text = cbx_nivel.Text;
+                btn_salir.Visible = true;
+                cbx_nivel.Text = "";
+                demo3();
+
+            }
+            else if (NumAnillos == 6 & cbx_nivel.Text == "Medio")
+            {
+                panel_juego.Visible = true;
+                panel_menu.Visible = false;
+                btn_salir.Visible = true;
+                cbx_nivel.Text = "";
+                demo6();
+            }
+            else if (NumAnillos == 8 & cbx_nivel.Text == "Dificil")
+            {
+                panel_juego.Visible = true;
+                panel_menu.Visible = false;
+                btn_salir.Visible = true;
+                cbx_nivel.Text = "";
+                demo8();
+            }
+        }
         private void btn_jugar_Click(object sender, EventArgs e) { }
         
         private void torresHanoi_KeyPress(object sender, KeyPressEventArgs e)
