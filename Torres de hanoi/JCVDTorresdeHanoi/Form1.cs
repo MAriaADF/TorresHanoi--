@@ -385,8 +385,32 @@ namespace TorresdeHanoi
                 demo8();
             }
         }
-        private void btn_jugar_Click(object sender, EventArgs e) { }
-        
+
+        private void btn_jugar_Click(object sender, EventArgs e)
+        {
+            validar_nivel();
+            if (cbx_nivel.Text == "")
+            {
+                MessageBox.Show("Seleccione el nivel de juego");
+            }
+            else
+            {
+                juego.Show();
+                inicia_juego();
+                panel_juego.Visible = true;
+                panel_menu.Visible = false;
+                lb_nivel.Visible = true;
+                lblIntentos.Visible = true;
+                lblIntentos2.Visible = true;
+                lblIntentos3.Visible = true;
+                lblTiempo.Visible = true;
+                lb_nivel.Text = cbx_nivel.Text;
+                cbx_nivel.Text = "";
+                btn_menu.Visible = true;
+
+            }
+        }
+
         private void torresHanoi_KeyPress(object sender, KeyPressEventArgs e)
         {
             
