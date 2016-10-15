@@ -424,7 +424,9 @@ namespace TorresdeHanoi
            
         }
 
-        //Jugar, se validan las reglas para obtener el ganador del juego
+        /// <summary>
+        ///Jugar, se validan las reglas para obtener el ganador del juego
+        /// </summary>
         private void inicia_juego()
         {
             this.btnPausa.Text = "Pausa";
@@ -455,6 +457,25 @@ namespace TorresdeHanoi
             lblIntentos2.Text = Intentos.ToString();
             Jugar = true;
             this.Refresh();
+        }
+
+        /// <summary>
+        /// Valida lod niveles del juego
+        /// </summary>
+        private void validar_nivel()
+        {
+            if (cbx_nivel.Text == "Facil")
+            {
+                NumAnillos = 3;
+            }
+            else if (cbx_nivel.Text == "Medio")
+            {
+                NumAnillos = 6;
+            }
+            else if (cbx_nivel.Text == "Dificil")
+            {
+                NumAnillos = 8;
+            }
         }
     }
 }
