@@ -413,8 +413,12 @@ namespace TorresdeHanoi
 
         private void torresHanoi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
+            {
+                this.Close();
+            }
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -477,6 +481,7 @@ namespace TorresdeHanoi
                 NumAnillos = 8;
             }
         }
+
         /// <summary>
         /// demo de tres anillos
         /// </summary>
