@@ -421,8 +421,24 @@ namespace TorresdeHanoi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            cronos.Stop();
+            timer1.Stop();
+            var resultado = (MessageBox.Show("Desea cancelar el juego", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning));
+            if (resultado == DialogResult.Yes)
+            {
+                panel_juego.Visible = false;
+                panel_menu.Visible = true;
+                btnPausa.Visible = false;
+                btn_menu.Visible = false;
+
+            }
+            if (resultado == DialogResult.No)
+            {
+                cronos.Start();
+                timer1.Start();
+            }
         }
+
         private void btn_salir_Click(object sender, EventArgs e)
         {
            
