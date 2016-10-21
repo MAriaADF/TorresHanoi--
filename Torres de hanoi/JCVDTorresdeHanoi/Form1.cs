@@ -441,7 +441,10 @@ namespace TorresdeHanoi
 
         private void btn_salir_Click(object sender, EventArgs e)
         {
-           
+            panel_juego.Visible = false;
+            btn_salir.Visible = false;
+            panel_menu.Visible = true;
+            Jugar = false;
         }
 
         /// <summary>
